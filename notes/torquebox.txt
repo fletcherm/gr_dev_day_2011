@@ -10,3 +10,15 @@
 * launch the torquebox server and run Celerity tests against it
 * if passed? then publish(artifact)
 
+
+The recipe
+1. Torquebox - hold the JRuby
+2. Your preferred version of JRuby
+3. Your gems
+4. Your app
+
+Mix well. Shaken not stirred.
+Copy to a machine with only Java on it.
+Unpack it and launch.
+Run the tests against the launched server.
+Tests pass? Artifact done.
