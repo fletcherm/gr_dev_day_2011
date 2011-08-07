@@ -7,7 +7,7 @@
 * copy the app archive and JRuby install into torquebox
 * copy in some startup / shutdown scripts (these setup torquebox env vars and launch / stop the server)
 * tar it up, scp it to a test machine (only java installed)
-* launch the torquebox server and run Celerity tests against it
+* launch the torquebox server and run Capybara tests against it
 * if passed? then publish(artifact)
 
 
