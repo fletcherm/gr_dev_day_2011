@@ -3,7 +3,7 @@
 * delete its JRuby 
 * download and unpack our JRuby version (cache locally)
 * bundle install --without test development into it
-* create the rails app archive (knob) - rake torquebox:archive 
+* create the rails app archive (knob) - rake torquebox:archive - required custom rake task
 * copy the app archive and JRuby install into torquebox
 * copy in some startup / shutdown scripts (these setup torquebox env vars and launch / stop the server)
 * tar it up, scp it to a test machine (only java installed)
