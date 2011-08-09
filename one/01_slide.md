@@ -1,10 +1,12 @@
 !SLIDE 
 # JRuby, Rails, and Torquebox #
+## DetroitRuby August 2011 ##
 ## [github.com/fletcherm/detroit\_ruby\_august\_2011](https://github.com/fletcherm/detroit_ruby_august_2011) ##
 
 !SLIDE center
-# Matt Fletcher and Micah Alles #
+# Matt Fletcher #
 # Atomic Object #
+### big thanks to Micah Alles ###
 ![AO](AO-symbol-color.png)
 
 !SLIDE center
@@ -14,7 +16,7 @@
 !SLIDE
 ## Ruby interpreter on the JVM ##
 
-!SLIDE bullets incremental
+!SLIDE bullets
 # Upsides #
 * fifteen+ years of Java libraries
 * deploy almost anywhere
@@ -106,7 +108,7 @@
     end
 
 !SLIDE
-# RSpec for testing #
+# RSpec #
 
 !SLIDE
 # Substance - look and feel #
@@ -141,8 +143,98 @@
 !SLIDE
 # shell script on Linux #
 
+!SLIDE
+# Rails and Torquebox #
 
+!SLIDE bullets
+# Why? #
+* customers with sensitive info - no outside hosting
+* self-contained app - minimize dependences
+* JRuby + Rails + Torquebox a perfect fit
 
+!SLIDE
+# (skipping Rails introduction) #
+
+!SLIDE center
+# Torquebox #
+![Torquebox](torquebox.png)
+credit torquebox website
+
+!SLIDE bullets
+# features #
+* easy deploy
+* web server
+* scheduled jobs
+* synchronous or asynchronous tasks
+* messaging
+* caching
+
+!SLIDE bullets
+# easy deploy #
+* rolls your app into a knob
+* to be deployed with the rest of torquebox
+
+!SLIDE
+# web server #
+## JBoss Application Server ##
+
+!SLIDE bullets
+# jobs #
+* define a Ruby class with a `run` method
+* add to the `jobs` key in `torquebox.yml`
+* specify class and frequency. done.
+
+!SLIDE bullets
+# tasks #
+* define a Ruby class
+* mixin `TorqueBox::Messaging::Backgroundable`
+* call method `foo.bar` synchronously
+* or `foo.background.bar` asynchronously
+* futures help you know when it's done
+
+!SLIDE bullets
+# messaging #
+* define a Ruby class with a `on_message` method
+* mixin `TorqueBox::Messaging`
+* add to the `messaging` key in `torquebox.yml`
+* specify class and message queue name
+* publish messages by injecting the appropriate queue
+
+!SLIDE
+# caching #
+## Infinispan ##
+## alternative to memcached ##
+## `config.cache_store = :torque_box_store`
+
+!SLIDE
+# Building a Rails app with Torquebox and JRuby #
+
+!SLIDE
+## (see previous slides for goodies) ##
+
+!SLIDE
+# things that sucked #
+
+!SLIDE bullets
+# startup time #
+
+!SLIDE
+# `export JAVA_OPTS="-d32"` #
+
+!SLIDE
+# more likely a Rails + JRuby loader problem than JVM problem #
+
+!SLIDE bullets
+# Ruby 1.9 support #
+* it was mostly there, but not quite enough (January 2011)
+* hard to debug errors 
+* might be there now (August 2011)
+
+!SLIDE
+# Torquebox slow to start #
+## usually only an issue once a day ##
+## somewhat slow to reload in dev mode ##
+## blazing fast reloads in production mode ##
 
 > notes 
 !SLIDE
