@@ -14,7 +14,7 @@
 ![JRuby](jruby.png)
 
 !SLIDE
-## Ruby interpreter on the JVM ##
+# Ruby interpreter on the JVM #
 
 !SLIDE bullets
 # Upsides #
@@ -40,7 +40,7 @@
 ## started with version 1.0 (2007) ##
 
 !SLIDE
-## Write Ruby ##
+# Write Ruby #
     @@@ Ruby
     class ConfigurationFacade
       def initialize
@@ -59,7 +59,7 @@
     end
 
 !SLIDE
-## Interface with Java ##
+# Interface with Java #
     @@@ Ruby
     class AgingReportView
       def view(parent)
@@ -71,7 +71,7 @@
     end
 
 !SLIDE
-## Cross-pollinate for maximum goodness ##
+# Cross-pollinate for maximum goodness #
     @@@ Ruby
     def invoke_later(&block)
       if javax.swing.SwingUtilities.
@@ -150,7 +150,7 @@
 # Why? #
 * customers with sensitive info - no outside hosting
 * self-contained app - minimize dependences
-* JRuby + Rails + Torquebox a perfect fit
+* JRuby + Rails + Torquebox a great fit
 
 !SLIDE
 # (skipping Rails introduction) #
@@ -194,7 +194,7 @@ credit torquebox website
 
 !SLIDE bullets
 # messaging #
-* define a Ruby class with a `on_message` method
+* define a Ruby class with an `on_message` method
 * mixin `TorqueBox::Messaging`
 * add to the `messaging` key in `torquebox.yml`
 * specify class and message queue name
@@ -210,7 +210,71 @@ credit torquebox website
 # Building a Rails app with Torquebox and JRuby #
 
 !SLIDE
+# The recipe #
+
+!SLIDE bullets
+# ingredients #
+* Torquebox - hold the JRuby
+* your preferred version of JRuby
+* your gems
+* your app
+* support scripts
+
+!SLIDE
+# stirring the pot #
+
+!SLIDE bullets
+# prereq software #
+* download and cache torquebox
+* download and cache your JRuby version
+
+!SLIDE
+# unpack torquebox and remove its JRuby #
+
+!SLIDE
+# unpack your JRuby #
+
+!SLIDE
+# use bundler to install your gems into this JRuby #
+
+!SLIDE
+# `rake torquebox:archive` => knob #
+
+!SLIDE
+# copy knob and JRuby into torquebox #
+
+!SLIDE
+# copy in support scripts (startup, shutdown, etc) #
+
+!SLIDE
+# tar it up #
+
+!SLIDE
+# consume #
+
+!SLIDE
+# scp archive to test machine with only Java and database #
+
+!SLIDE
+# unpack archive and launch app in production mode #
+
+!SLIDE
+# run acceptance tests against the running server #
+
+!SLIDE
+# passed? publish the artifact and mark it green #
+
+!SLIDE
+# ups and downs of these technologies #
+
+!SLIDE
 ## (see previous slides for goodies) ##
+
+!SLIDE
+# used MongoDB + Mongoid with no issue or extra work required #
+
+!SLIDE
+# many other rubygems with no issue #
 
 !SLIDE
 # things that sucked #
@@ -236,7 +300,11 @@ credit torquebox website
 ## somewhat slow to reload in dev mode ##
 ## blazing fast reloads in production mode ##
 
-> notes 
 !SLIDE
-# Recent Rails + Torquebox project #
-# used MongoDB + Mongoid with no issue or extra work required #
+# battling the environment #
+
+!SLIDE center
+# Thanks! #
+# Matt Fletcher #
+# Atomic Object #
+![AO](AO-symbol-color.png)
