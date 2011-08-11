@@ -111,10 +111,10 @@
 # RSpec #
 
 !SLIDE
-# Substance - look and feel #
+# Substance #
 
 !SLIDE
-# Apache Batik - SVG #
+# Apache Batik #
 
 !SLIDE
 # Java scenegraph #
@@ -126,10 +126,10 @@
 # Beta distribution #
 
 !SLIDE
-# Bouncy Castle - encryption #
+# Bouncy Castle #
 
 !SLIDE
-# YAML - configuration #
+# YAML #
 
 !SLIDE
 # NSIS - Windows installer #
@@ -306,5 +306,5 @@ credit torquebox website
 !SLIDE center
 # Thanks! #
 # Matt Fletcher #
-# Atomic Object #
+## [github.com/fletcherm/detroit\_ruby\_august\_2011](https://github.com/fletcherm/detroit_ruby_august_2011) ##
 ![AO](AO-symbol-color.png)
