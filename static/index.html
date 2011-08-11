@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>My Preso</title>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+    setupPreso(false, './');
+  });
+  </script>
+</head>
+
+<body>
+
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">&larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">z</td><td>toggle help (this)</td></tr>
+  </table>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="one/01_slide/1">
+<h1>JRuby, Rails, and Torquebox</h1>
+
+<h2>DetroitRuby August 2011</h2>
+
+<h2><a href="https://github.com/fletcherm/detroit_ruby_august_2011">github.com/fletcherm/detroit_ruby_august_2011</a></h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/2">
+<h1>Matt Fletcher</h1>
+
+<h1>Atomic Object</h1>
+
+<h3>big thanks to Micah Alles</h3>
+
+<p><img src="./file/one/AO-symbol-color.png" alt="AO"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/3">
+<h1>Brief intro to JRuby</h1>
+
+<p><img src="./file/one/jruby.png" alt="JRuby"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/4">
+<h1>Ruby interpreter on the JVM</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/5">
+<h1>Upsides</h1>
+
+<ul>
+<li>fifteen+ years of Java libraries</li>
+<li>deploy almost anywhere</li>
+<li>easy distribution</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/6">
+<h1>Demo!</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/7">
+<h2>DOS simulators =&gt; Java + JRuby simulators</h2>
+
+<p><img src="./file/one/agi_logo.png" alt="AGI"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/8">
+<h1>Techs</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/9">
+<h1>Java</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/10">
+<h1>JRuby</h1>
+
+<h2>started with version 1.0 (2007)</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/11">
+<h1>Write Ruby</h1>
+
+<pre class="sh_Ruby"><code>class ConfigurationFacade
+  def initialize
+    @config = ...
+  end
+
+  def method_missing(name, *args, &amp;block)
+    @config[name.to_s]
+  end
+
+  def capital_investment
+    @config["capital_investment"].present?
+      ? @config["capital_investment"]
+      : 0
+  end
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/12">
+<h1>Interface with Java</h1>
+
+<pre class="sh_Ruby"><code>class AgingReportView
+  def view(parent)
+    @table_model = ReadOnlyTableModel.new
+    @aging = JTable.new(@table_model)
+    @aging.row_selection_allowed = false
+    @aging.cell_selection_enabled = true
+  end
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/13">
+<h1>Cross-pollinate for maximum goodness</h1>
+
+<pre class="sh_Ruby"><code>def invoke_later(&amp;block)
+  if javax.swing.SwingUtilities.
+                 is_event_dispatch_thread
+    block.call
+  else
+    ...
+  end
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/14">
+<pre class="sh_Ruby"><code>SwingUtilities.invoke_later(Runnable.impl do
+  begin
+    block.call
+  rescue Exception =&gt; ex
+    puts ex.message
+    puts ex.backtrace.join("\n")
+  end
+end)</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/15">
+<pre class="sh_Ruby"><code>def add_row(row)
+  invoke_later do
+    @table_model.add_row row.to_java
+  end
+end
+
+def clear_rows
+  invoke_later do
+    @table_model.clear
+  end
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/16">
+<h1>RSpec</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/17">
+<h1>Substance</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/18">
+<h1>Apache Batik</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/19">
+<h1>Java scenegraph</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/20">
+<h1>JFreeChart</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/21">
+<h1>Beta distribution</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/22">
+<h1>Bouncy Castle</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/23">
+<h1>YAML</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/24">
+<h1>NSIS - Windows installer</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/25">
+<h1>Launch4J - Windows Java app launcher</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/26">
+<h1>.app bundle on Mac</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/27">
+<h1>shell script on Linux</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/28">
+<h1>Rails and Torquebox</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/29">
+<h1>Why?</h1>
+
+<ul>
+<li>customers with sensitive info - no outside hosting</li>
+<li>self-contained app - minimize dependences</li>
+<li>JRuby + Rails + Torquebox a great fit</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/30">
+<h1>(skipping Rails introduction)</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/31">
+<h1>Torquebox</h1>
+
+<p><img src="./file/one/torquebox.png" alt="Torquebox"/>
+credit torquebox website</p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/32">
+<h1>features</h1>
+
+<ul>
+<li>easy deploy</li>
+<li>web server</li>
+<li>scheduled jobs</li>
+<li>synchronous or asynchronous tasks</li>
+<li>messaging</li>
+<li>caching</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/33">
+<h1>easy deploy</h1>
+
+<ul>
+<li>rolls your app into a knob</li>
+<li>to be deployed with the rest of torquebox</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/34">
+<h1>web server</h1>
+
+<h2>JBoss Application Server</h2></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/35">
+<h1>jobs</h1>
+
+<ul>
+<li>define a Ruby class with a <code>run</code> method</li>
+<li>add to the <code>jobs</code> key in <code>torquebox.yml</code></li>
+<li>specify class and frequency. done.</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/36">
+<h1>tasks</h1>
+
+<ul>
+<li>define a Ruby class</li>
+<li>mixin <code>TorqueBox::Messaging::Backgroundable</code></li>
+<li>call method <code>foo.bar</code> synchronously</li>
+<li>or <code>foo.background.bar</code> asynchronously</li>
+<li>futures help you know when it's done</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/37">
+<h1>messaging</h1>
+
+<ul>
+<li>define a Ruby class with an <code>on_message</code> method</li>
+<li>mixin <code>TorqueBox::Messaging</code></li>
+<li>add to the <code>messaging</code> key in <code>torquebox.yml</code></li>
+<li>specify class and message queue name</li>
+<li>publish messages by injecting the appropriate queue</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/38">
+<h1>caching</h1>
+
+<h2>Infinispan</h2>
+
+<h2>alternative to memcached</h2>
+
+<h2><code>config.cache_store = :torque_box_store</code></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/39">
+<h1>Building a Rails app with Torquebox and JRuby</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/40">
+<h1>The recipe</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/41">
+<h1>ingredients</h1>
+
+<ul>
+<li>Torquebox - hold the JRuby</li>
+<li>your preferred version of JRuby</li>
+<li>your gems</li>
+<li>your app</li>
+<li>support scripts</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/42">
+<h1>stirring the pot</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/43">
+<h1>prereq software</h1>
+
+<ul>
+<li>download and cache torquebox</li>
+<li>download and cache your JRuby version</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/44">
+<h1>unpack torquebox and remove its JRuby</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/45">
+<h1>unpack your JRuby</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/46">
+<h1>use bundler to install your gems into this JRuby</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/47">
+<h1><code>rake torquebox:archive</code> =&gt; knob</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/48">
+<h1>copy knob and JRuby into torquebox</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/49">
+<h1>copy in support scripts (startup, shutdown, etc)</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/50">
+<h1>tar it up</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/51">
+<h1>consume</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/52">
+<h1>scp archive to test machine with only Java and database</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/53">
+<h1>unpack archive and launch app in production mode</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/54">
+<h1>run acceptance tests against the running server</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/55">
+<h1>passed? publish the artifact and mark it green</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/56">
+<h1>ups and downs of these technologies</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/57">
+<h2>(see previous slides for goodies)</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/58">
+<h1>used MongoDB + Mongoid with no issue or extra work required</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/59">
+<h1>many other rubygems with no issue</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/60">
+<h1>things that sucked</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/61">
+<h1>startup time</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/62">
+<h1><code>export JAVA_OPTS="-d32"</code></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/63">
+<h1>more likely a Rails + JRuby loader problem than JVM problem</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/64">
+<h1>Ruby 1.9 support</h1>
+
+<ul>
+<li>it was mostly there, but not quite enough (January 2011)</li>
+<li>hard to debug errors</li>
+<li>might be there now (August 2011)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/65">
+<h1>Torquebox slow to start</h1>
+
+<h2>usually only an issue once a day</h2>
+
+<h2>somewhat slow to reload in dev mode</h2>
+
+<h2>blazing fast reloads in production mode</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/66">
+<h1>battling the environment</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/67">
+<h1>Thanks!</h1>
+
+<h1>Matt Fletcher</h1>
+
+<h2><a href="https://github.com/fletcherm/detroit_ruby_august_2011">github.com/fletcherm/detroit_ruby_august_2011</a></h2>
+
+<p><img src="./file/one/AO-symbol-color.png" alt="AO"/></p></div>
+</div></div>
+
+</body>
+</html>
