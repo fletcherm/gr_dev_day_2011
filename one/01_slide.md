@@ -43,10 +43,6 @@
 # Write Ruby #
     @@@ Ruby
     class ConfigurationFacade
-      def initialize
-        @config = ...
-      end
-
       def method_missing(name, *args, &block)
         @config[name.to_s]
       end
@@ -158,7 +154,7 @@
 !SLIDE center
 # Torquebox #
 ![Torquebox](torquebox.png)
-credit torquebox website
+credit Torquebox website
 
 !SLIDE bullets
 # features #
@@ -172,7 +168,7 @@ credit torquebox website
 !SLIDE bullets
 # easy deploy #
 * rolls your app into a knob
-* to be deployed with the rest of torquebox
+* to be deployed with the rest of Torquebox
 
 !SLIDE
 # web server #
@@ -210,7 +206,7 @@ credit torquebox website
 # Building a Rails app with Torquebox and JRuby #
 
 !SLIDE
-# The recipe #
+# the recipe #
 
 !SLIDE bullets
 # ingredients #
@@ -225,11 +221,11 @@ credit torquebox website
 
 !SLIDE bullets
 # prereq software #
-* download and cache torquebox
+* download and cache Torquebox
 * download and cache your JRuby version
 
 !SLIDE
-# unpack torquebox and remove its JRuby #
+# unpack Torquebox and remove its JRuby #
 
 !SLIDE
 # unpack your JRuby #
@@ -241,7 +237,7 @@ credit torquebox website
 # `rake torquebox:archive` => knob #
 
 !SLIDE
-# copy knob and JRuby into torquebox #
+# copy knob and JRuby into Torquebox #
 
 !SLIDE
 # copy in support scripts (startup, shutdown, etc) #
@@ -286,7 +282,7 @@ credit torquebox website
 # `export JAVA_OPTS="-d32"` #
 
 !SLIDE
-# more likely a Rails + JRuby loader problem than JVM problem #
+# JRuby + Rails loading problem or JVM problem? #
 
 !SLIDE bullets
 # Ruby 1.9 support #
