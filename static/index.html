@@ -111,10 +111,6 @@
 <h1>Write Ruby</h1>
 
 <pre class="sh_Ruby"><code>class ConfigurationFacade
-  def initialize
-    @config = ...
-  end
-
   def method_missing(name, *args, &amp;block)
     @config[name.to_s]
   end
@@ -209,7 +205,7 @@ end</code></pre></div>
 <h1>Torquebox</h1>
 
 <p><img src="./file/one/torquebox.png" alt="Torquebox"/>
-credit torquebox website</p></div>
+credit Torquebox website</p></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/32">
 <h1>features</h1>
 
@@ -227,7 +223,7 @@ credit torquebox website</p></div>
 
 <ul>
 <li>rolls your app into a knob</li>
-<li>to be deployed with the rest of torquebox</li>
+<li>to be deployed with the rest of Torquebox</li>
 </ul>
 </div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/34">
@@ -276,7 +272,7 @@ credit torquebox website</p></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/39">
 <h1>Building a Rails app with Torquebox and JRuby</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/40">
-<h1>The recipe</h1></div>
+<h1>the recipe</h1></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/41">
 <h1>ingredients</h1>
 
@@ -294,12 +290,12 @@ credit torquebox website</p></div>
 <h1>prereq software</h1>
 
 <ul>
-<li>download and cache torquebox</li>
+<li>download and cache Torquebox</li>
 <li>download and cache your JRuby version</li>
 </ul>
 </div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/44">
-<h1>unpack torquebox and remove its JRuby</h1></div>
+<h1>unpack Torquebox and remove its JRuby</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/45">
 <h1>unpack your JRuby</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/46">
@@ -307,7 +303,7 @@ credit torquebox website</p></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/47">
 <h1><code>rake torquebox:archive</code> =&gt; knob</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/48">
-<h1>copy knob and JRuby into torquebox</h1></div>
+<h1>copy knob and JRuby into Torquebox</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/49">
 <h1>copy in support scripts (startup, shutdown, etc)</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/50">
@@ -337,7 +333,7 @@ credit torquebox website</p></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/62">
 <h1><code>export JAVA_OPTS="-d32"</code></h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/63">
-<h1>more likely a Rails + JRuby loader problem than JVM problem</h1></div>
+<h1>JRuby + Rails loading problem or JVM problem?</h1></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/64">
 <h1>Ruby 1.9 support</h1>
 
