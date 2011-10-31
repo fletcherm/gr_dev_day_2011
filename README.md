@@ -1,6 +1,6 @@
-This repository is a [ShowOff](https://github.com/schacon/showoff) project for the talk I gave at the DetroitRuby meetup in August 2011.
+This repository is a [ShowOff](https://github.com/schacon/showoff) project for the talk I gave at the GR DevDay conference in November 2011.
 
-[JRuby, Rails, and Torquebox](http://fletcherm.github.com/detroit_ruby_august_2011/#1)
+[JRuby, Rails, and Torquebox](http://fletcherm.github.com/gr_dev_day_2011/#1)
 
 If you weren't at the talk, then the slideshow may not make much sense. Too bad for you.
 
