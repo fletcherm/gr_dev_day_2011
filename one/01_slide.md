@@ -209,10 +209,11 @@ credit Torquebox website
 * pluggable message encodings (binary, text, json)
 * improved transactions
 
-!SLIDE
+!SLIDE smaller
     @@@ Ruby
     class Processor < TorqueBox::Messaging::MessageProcessor
       always_background :send_thanks_email
+
       def on_message(msg)
         thing = Thing.create(:name => msg)
         inject('/queues/post-process').publish(thing.id)
@@ -220,7 +221,20 @@ credit Torquebox website
         # raise "rollback everything"
       end
     end
-credit torquebox website
+
+### credit torquebox website ###
+
+!SLIDE
+    @@@ Ruby
+    User.transaction do
+      User.create(:username => 'Kotori')
+      User.transaction do
+        User.create(:username => 'Nemu')
+        raise ActiveRecord::Rollback
+      end
+    end
+
+### credit torquebox website ###
 
 !SLIDE
     @@@ Ruby
@@ -233,7 +247,8 @@ credit torquebox website
         end
       end
     end
-credit torquebox website
+
+### credit torquebox website ###
 
 !SLIDE
 # Building a Rails app with Torquebox and JRuby #
@@ -267,7 +282,8 @@ credit torquebox website
 # use bundler to install your gems into this JRuby #
 
 !SLIDE
-# `rake torquebox:archive` => knob #
+# `>> rake torquebox:archive` #
+# `=> knob` #
 
 !SLIDE
 # copy knob and JRuby into Torquebox #
