@@ -202,6 +202,39 @@ credit Torquebox website
 ## alternative to memcached ##
 ## `config.cache_store = :torque_box_store`
 
+!SLIDE bullets
+# Torquebox 2.0 #
+* Ruby configuration file
+* JBoss AS7 - improved performance
+* pluggable message encodings (binary, text, json)
+* improved transactions
+
+!SLIDE
+    @@@ Ruby
+    class Processor < TorqueBox::Messaging::MessageProcessor
+      always_background :send_thanks_email
+      def on_message(msg)
+        thing = Thing.create(:name => msg)
+        inject('/queues/post-process').publish(thing.id)
+        send_thanks_email(thing)
+        # raise "rollback everything"
+      end
+    end
+credit torquebox website
+
+!SLIDE
+    @@@ Ruby
+    TorqueBox.transaction do
+      User.transaction do
+        User.create(:username => 'Kotori')
+        User.transaction do
+          User.create(:username => 'Nemu')
+          raise ActiveRecord::Rollback
+        end
+      end
+    end
+credit torquebox website
+
 !SLIDE
 # Building a Rails app with Torquebox and JRuby #
 
