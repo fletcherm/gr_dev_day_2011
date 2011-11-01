@@ -1,11 +1,11 @@
 !SLIDE 
 # JRuby, Rails, and Torquebox #
-## DetroitRuby August 2011 ##
-## [github.com/fletcherm/detroit\_ruby\_august\_2011](https://github.com/fletcherm/detroit_ruby_august_2011) ##
+## GR DevDay November 2011 ##
+## [github.com/fletcherm/gr\_dev\_day\_2011](https://github.com/fletcherm/gr_dev_day_2011) ##
 
 !SLIDE center
 # Matt Fletcher #
-# Atomic Object #
+# [Atomic Object](http://www.atomicobject.com) #
 ### big thanks to Micah Alles ###
 ![AO](AO-symbol-color.png)
 
@@ -288,7 +288,7 @@ credit Torquebox website
 # Ruby 1.9 support #
 * it was mostly there, but not quite enough (January 2011)
 * hard to debug errors 
-* might be there now (August 2011)
+* might be there now (November 2011)
 
 !SLIDE
 # Torquebox slow to start #
@@ -302,5 +302,5 @@ credit Torquebox website
 !SLIDE center
 # Thanks! #
 # Matt Fletcher #
-## [github.com/fletcherm/detroit\_ruby\_august\_2011](https://github.com/fletcherm/detroit_ruby_august_2011) ##
+## [github.com/fletcherm/gr\_dev\_day\_2011](https://github.com/fletcherm/gr_dev_day_2011) ##
 ![AO](AO-symbol-color.png)
