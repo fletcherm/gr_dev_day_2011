@@ -33,7 +33,7 @@
 # Techs #
 
 !SLIDE
-# Java #
+# Java and the JVM #
 
 !SLIDE
 # JRuby #
@@ -347,6 +347,9 @@ credit Torquebox website
 
 !SLIDE
 # battling the environment #
+
+!SLIDE command
+# env -i #
 
 !SLIDE center
 # Thanks! #
