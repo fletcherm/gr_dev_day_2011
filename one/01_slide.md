@@ -58,7 +58,7 @@
 # Interface with Java #
     @@@ Ruby
     class AgingReportView
-      def view(parent)
+      def view
         @table_model = ReadOnlyTableModel.new
         @aging = JTable.new(@table_model)
         @aging.row_selection_allowed = false

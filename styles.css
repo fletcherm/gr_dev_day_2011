@@ -17,6 +17,7 @@ body {
 }
 .content a {
   color: #00AAA1;
+  text-decoration: none;
 }
 pre.sh_sourceCode {
   padding: 10px;
