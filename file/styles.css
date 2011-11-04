@@ -1,0 +1,24 @@
+body {
+  color: #002225;
+
+  /* from  http://www.colorzilla.com/gradient-editor/ */
+  background: #e3e7ea; /* Old browsers */
+  background: -moz-linear-gradient(top,  #e3e7ea 0%, #ffffff 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e3e7ea), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #e3e7ea 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #e3e7ea 0%,#ffffff 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #e3e7ea 0%,#ffffff 100%); /* IE10+ */
+  background: linear-gradient(top,  #e3e7ea 0%,#ffffff 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3e7ea', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+#preso, .slide {
+  background: none !important;
+  border: none;
+}
+.content a {
+  color: #00AAA1;
+  text-decoration: none;
+}
+pre.sh_sourceCode {
+  padding: 10px;
+}
