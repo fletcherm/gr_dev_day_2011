@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>My Preso</title>
+  <title>JRuby, Rails, and Torquebox</title>
 
   <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
   <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
@@ -27,6 +27,8 @@
   <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
   <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
 
+  
+    <link rel="stylesheet" href="file/styles.css" type="text/css"/>
   
 
   
@@ -67,13 +69,13 @@
 <div class="slide" data-transition="none"><div class="content" ref="one/01_slide/1">
 <h1>JRuby, Rails, and Torquebox</h1>
 
-<h2>DetroitRuby August 2011</h2>
+<h2>GR DevDay November 2011</h2>
 
-<h2><a href="https://github.com/fletcherm/detroit_ruby_august_2011">github.com/fletcherm/detroit_ruby_august_2011</a></h2></div>
+<h2><a href="https://github.com/fletcherm/gr_dev_day_2011">github.com/fletcherm/gr_dev_day_2011</a></h2></div>
 </div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/2">
 <h1>Matt Fletcher</h1>
 
-<h1>Atomic Object</h1>
+<h1><a href="http://www.atomicobject.com">Atomic Object</a></h1>
 
 <h3>big thanks to Micah Alles</h3>
 
@@ -102,7 +104,7 @@
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/8">
 <h1>Techs</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/9">
-<h1>Java</h1></div>
+<h1>Java and the JVM</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/10">
 <h1>JRuby</h1>
 
@@ -125,7 +127,7 @@ end</code></pre></div>
 <h1>Interface with Java</h1>
 
 <pre class="sh_Ruby"><code>class AgingReportView
-  def view(parent)
+  def view
     @table_model = ReadOnlyTableModel.new
     @aging = JTable.new(@table_model)
     @aging.row_selection_allowed = false
@@ -269,11 +271,56 @@ credit Torquebox website</p></div>
 <h2>alternative to memcached</h2>
 
 <h2><code>config.cache_store = :torque_box_store</code></h2></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/39">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/39">
+<h1>Torquebox 2.0</h1>
+
+<ul>
+<li>Ruby configuration file</li>
+<li>JBoss AS7 - improved performance</li>
+<li>pluggable message encodings (binary, text, json)</li>
+<li>improved transactions</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="one/01_slide/40">
+<pre class="sh_Ruby"><code>class Processor &lt; TorqueBox::Messaging::MessageProcessor
+  always_background :send_thanks_email
+
+  def on_message(msg)
+    thing = Thing.create(:name =&gt; msg)
+    inject('/queues/post-process').publish(thing.id)
+    send_thanks_email(thing)
+    # raise "rollback everything"
+  end
+end</code></pre>
+
+<h3>credit torquebox website</h3></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/41">
+<pre class="sh_Ruby"><code>User.transaction do
+  User.create(:username =&gt; 'Kotori')
+  User.transaction do
+    User.create(:username =&gt; 'Nemu')
+    raise ActiveRecord::Rollback
+  end
+end</code></pre>
+
+<h3>credit torquebox website</h3></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/42">
+<pre class="sh_Ruby"><code>TorqueBox.transaction do
+  User.transaction do
+    User.create(:username =&gt; 'Kotori')
+    User.transaction do
+      User.create(:username =&gt; 'Nemu')
+      raise ActiveRecord::Rollback
+    end
+  end
+end</code></pre>
+
+<h3>credit torquebox website</h3></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/43">
 <h1>Building a Rails app with Torquebox and JRuby</h1></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/40">
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/44">
 <h1>the recipe</h1></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/41">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/45">
 <h1>ingredients</h1>
 
 <ul>
@@ -284,9 +331,9 @@ credit Torquebox website</p></div>
 <li>support scripts</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/42">
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/46">
 <h1>stirring the pot</h1></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/43">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/47">
 <h1>prereq software</h1>
 
 <ul>
@@ -294,56 +341,58 @@ credit Torquebox website</p></div>
 <li>download and cache your JRuby version</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/44">
-<h1>unpack Torquebox and remove its JRuby</h1></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/45">
-<h1>unpack your JRuby</h1></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/46">
-<h1>use bundler to install your gems into this JRuby</h1></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/47">
-<h1><code>rake torquebox:archive</code> =&gt; knob</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/48">
-<h1>copy knob and JRuby into Torquebox</h1></div>
+<h1>unpack Torquebox and remove its JRuby</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/49">
-<h1>copy in support scripts (startup, shutdown, etc)</h1></div>
+<h1>unpack your JRuby</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/50">
-<h1>tar it up</h1></div>
+<h1>use bundler to install your gems into this JRuby</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/51">
-<h1>consume</h1></div>
+<h1><code>&gt;&gt; rake torquebox:archive</code></h1>
+
+<h1><code>=&gt; knob</code></h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/52">
-<h1>scp archive to test machine with only Java and database</h1></div>
+<h1>copy knob and JRuby into Torquebox</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/53">
-<h1>unpack archive and launch app in production mode</h1></div>
+<h1>copy in support scripts (startup, shutdown, etc)</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/54">
-<h1>run acceptance tests against the running server</h1></div>
+<h1>tar it up</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/55">
-<h1>passed? publish the artifact and mark it green</h1></div>
+<h1>consume</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/56">
-<h1>ups and downs of these technologies</h1></div>
+<h1>scp archive to test machine with only Java and database</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/57">
-<h2>(see previous slides for goodies)</h2></div>
+<h1>unpack archive and launch app in production mode</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/58">
-<h1>used MongoDB + Mongoid with no issue or extra work required</h1></div>
+<h1>run acceptance tests against the running server</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/59">
-<h1>many other rubygems with no issue</h1></div>
+<h1>passed? publish the artifact and mark it green</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/60">
-<h1>things that sucked</h1></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/61">
-<h1>startup time</h1></div>
+<h1>ups and downs of these technologies</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/61">
+<h2>(see previous slides for goodies)</h2></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/62">
-<h1><code>export JAVA_OPTS="-d32"</code></h1></div>
+<h1>used MongoDB + Mongoid with no issue or extra work required</h1></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/63">
+<h1>many other rubygems with no issue</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/64">
+<h1>things that sucked</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/65">
+<h1>startup time</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/66">
+<h1><code>export JAVA_OPTS="-d32"</code></h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/67">
 <h1>JRuby + Rails loading problem or JVM problem?</h1></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/64">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/68">
 <h1>Ruby 1.9 support</h1>
 
 <ul>
 <li>it was mostly there, but not quite enough (January 2011)</li>
 <li>hard to debug errors</li>
-<li>might be there now (August 2011)</li>
+<li>might be there now (November 2011)</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/65">
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/69">
 <h1>Torquebox slow to start</h1>
 
 <h2>usually only an issue once a day</h2>
@@ -351,14 +400,16 @@ credit Torquebox website</p></div>
 <h2>somewhat slow to reload in dev mode</h2>
 
 <h2>blazing fast reloads in production mode</h2></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/66">
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/70">
 <h1>battling the environment</h1></div>
-</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/67">
+</div><div class="slide" data-transition="none"><div class="content command" ref="one/01_slide/71">
+<h1>env -i</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="one/01_slide/72">
 <h1>Thanks!</h1>
 
 <h1>Matt Fletcher</h1>
 
-<h2><a href="https://github.com/fletcherm/detroit_ruby_august_2011">github.com/fletcherm/detroit_ruby_august_2011</a></h2>
+<h2><a href="https://github.com/fletcherm/gr_dev_day_2011">github.com/fletcherm/gr_dev_day_2011</a></h2>
 
 <p><img src="./file/one/AO-symbol-color.png" alt="AO"/></p></div>
 </div></div>
