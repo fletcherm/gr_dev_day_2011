@@ -1,7 +1,7 @@
 !SLIDE 
 # JRuby, Rails, and Torquebox #
 ## GR DevDay November 2011 ##
-## [github.com/fletcherm/gr\_dev\_day\_2011](https://github.com/fletcherm/gr_dev_day_2011) ##
+## [fletcherm.github.com/gr\_dev\_day\_2011](http://fletcherm.github.com/gr_dev_day_2011) ##
 
 !SLIDE center
 # Matt Fletcher #
@@ -354,5 +354,5 @@ credit Torquebox website
 !SLIDE center
 # Thanks! #
 # Matt Fletcher #
-## [github.com/fletcherm/gr\_dev\_day\_2011](https://github.com/fletcherm/gr_dev_day_2011) ##
+## [fletcherm.github.com/gr\_dev\_day\_2011](http://fletcherm.github.com/gr_dev_day_2011) ##
 ![AO](AO-symbol-color.png)
