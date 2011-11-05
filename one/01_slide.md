@@ -2,6 +2,7 @@
 # JRuby, Rails, and Torquebox #
 ## GR DevDay November 2011 ##
 ## [fletcherm.github.com/gr\_dev\_day\_2011](http://fletcherm.github.com/gr_dev_day_2011) ##
+## [www.atomicobject.com/pages/Presentations](http://www.atomicobject.com/pages/Presentations) ##
 
 !SLIDE center
 # Matt Fletcher #
@@ -353,6 +354,7 @@ credit Torquebox website
 
 !SLIDE center
 # Thanks! #
-# Matt Fletcher #
+## Matt Fletcher ##
 ## [fletcherm.github.com/gr\_dev\_day\_2011](http://fletcherm.github.com/gr_dev_day_2011) ##
+## [www.atomicobject.com/pages/Presentations](http://www.atomicobject.com/pages/Presentations) ##
 ![AO](AO-symbol-color.png)
